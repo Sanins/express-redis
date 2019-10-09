@@ -3,7 +3,7 @@ const app = express();
 
 const redisClient = require('./redis-client');
 
-app.set('/store/:key', async (req, res) => {
+app.get('/store/:key', async (req, res) => {
   const { key } = req.params;
   const value = req.query;
   await redisClient.setAsync(key, JSON.stringify(value));
