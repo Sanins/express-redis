@@ -6,6 +6,7 @@ const redisClient = require('./redis-client');
 app.get('/store/:key', async (req, res) => {
   const { key } = req.params;
   const value = req.query;
+  // setAsync updates the current key as well as setting a new set
   await redisClient.setAsync(key, JSON.stringify(value));
   return res.send('Success');
 });
